@@ -1,0 +1,20 @@
+{
+  "name": "caching-pagination",
+  "version": "1.0.0",
+  "description": "Cache with Redis and pagination with MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "author": "Juan Jose Vega <juanjosevegaquintero@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.22.0",
+    "express": "^4.17.1",
+    "redis": "^3.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13",
+    "response-time": "^2.3.2"
+  }
+}

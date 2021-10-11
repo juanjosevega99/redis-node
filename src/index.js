@@ -33,5 +33,22 @@ app.get('/character', async (req, res) => {
   }
 });
 
+app.get('/character/:id', async (req, res) => {
+  try {
+    const reply = await GET_ASYNC(req.originalUrl);
+    if (reply) {
+      return res.send(JSON.parse(reply));
+    }
+
+    const response = await axios.getp(
+      'https://rickandmortyapi.com/api/character/' + req.originalUrl
+    );
+    await SET_ASYNC(req.originalUrl, JSON.stringify(response.data));
+    return res.json(response.data);
+  } catch (error) {
+    return res.status(error.response.status).json({ message: error.message });
+  }
+});
+
 app.listen(3000);
 console.log('Server on port 3000');

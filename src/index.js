@@ -33,6 +33,10 @@ app.get('/character', async (req, res) => {
   }
 });
 
+function paginatedCharacters() {
+  console.log('testing');
+}
+
 app.get('/character/:id', async (req, res) => {
   try {
     const reply = await GET_ASYNC(req.originalUrl);

@@ -33,9 +33,24 @@ app.get('/character', async (req, res) => {
   }
 });
 
-function paginatedCharacters() {
-  console.log('testing');
-}
+const paginatedCharacters = async () => {
+  const page = parseInt(req.query.page);
+  const limit = parseInt(req.query.limit);
+  const skipIndex = (page - 1) * limit;
+  const results = {};
+
+  try {
+    results.results = await User.find()
+      .sort({ _id: 1 })
+      .limit(limit)
+      .skip(skipIndex)
+      .exec();
+
+    res.paginatedResults = results;
+  } catch (error) {
+    res.status(500).json({ message: 'Error Occurred' });
+  }
+};
 
 app.get('/character/:id', async (req, res) => {
   try {
